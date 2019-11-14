@@ -31,5 +31,17 @@ server.get('/species', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         })
+});
+
+server.delete('/species/:id', (req, res) => {
+    const id = req.params.id;
+    Species.remove(id)
+        .then(species => {
+            res.status(200).json({message: `the species with the id ${id} was deleted`})
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 })
 module.exports = server;
