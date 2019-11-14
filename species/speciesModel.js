@@ -2,6 +2,7 @@ const db = require("../data/dbConfig.js");
 
 module.exports = {
     insert,
+    getAll
 };
 
 function insert(species){
@@ -14,4 +15,8 @@ function insert(species){
                     .first()
             })
     )
+}
+
+function getAll(){
+    return db('species')
 }

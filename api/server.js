@@ -20,5 +20,16 @@ server.post('/species', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         })
+});
+
+server.get('/species', (req, res) => {
+    Species.getAll()
+        .then(species => {
+            res.status(200).json(species)
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        })
 })
 module.exports = server;
